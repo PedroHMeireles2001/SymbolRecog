@@ -1,4 +1,4 @@
-# Reconhecimento de Símbolos Específicos usando PyTorch, Tkinter e Pillow
+# Reconhecimento de Símbolos Específicos
 Este projeto tem como objetivo desenvolver um modelo de inteligência artificial que seja capaz de reconhecer símbolos específicos desenhados a mão. O modelo foi desenvolvido utilizando a biblioteca PyTorch e a interface gráfica Tkinter.
 
 ## Instalação
