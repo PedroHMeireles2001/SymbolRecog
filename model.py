@@ -8,7 +8,7 @@ import torchvision.transforms as transforms
 # Define as dimensões da rede
 input_size = 3 * 224 * 224 # 3 canais de cores, 224x224 pixels
 hidden_size = 256
-num_classes = 3 # número de classes no conjunto de dados
+num_classes = 2 # número de classes no conjunto de dados
 
 class MLP(nn.Module):
     def __init__(self, input_size, hidden_size, num_classes):
@@ -40,8 +40,10 @@ def predict(net,img):
     img = img.unsqueeze(0)
     with torch.no_grad():
         outputs = net(img)
-    _, predicted = torch.max(outputs.data, 1)
-    return predicted.item()
+    
+    probabilities = torch.softmax(outputs, dim=1)
+    _, predicted = torch.max(probabilities.data, 1)
+    return predicted.item(), probabilities[0, predicted].item()
 
 
 def transformImage(image):
